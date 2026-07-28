@@ -76,7 +76,7 @@ interface AppContextType {
   // Leads
   leads: Lead[];
   addLead: (lead: Omit<Lead, 'id' | 'createdAt'>) => void;
-  updateLeadStage: (id: string, stage: LeadStage) => void;
+  updateLeadStage: (id: string, stage: LeadStage, notes?: string) => void;
   convertLeadToClient: (leadId: string) => void;
   deleteLead: (id: string) => void;
 
@@ -541,8 +541,8 @@ export const AppProvider: React.FC<{ children: React.ReactNode }> = ({ children 
     showToast(`Lead ${newLead.name} added to pipeline`, 'success');
   };
 
-  const updateLeadStage = (id: string, stage: LeadStage) => {
-    setLeads(prev => prev.map(l => l.id === id ? { ...l, stage } : l));
+  const updateLeadStage = (id: string, stage: LeadStage, notes?: string) => {
+    setLeads(prev => prev.map(l => l.id === id ? { ...l, stage, ...(notes !== undefined ? { notes } : {}) } : l));
     if (stage === 'Won') {
       celebrate();
       showToast('🎉 Deal Won! Converted to active opportunity', 'success');
