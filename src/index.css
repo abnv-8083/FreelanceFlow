@@ -1,0 +1,196 @@
+@tailwind base;
+@tailwind components;
+@tailwind utilities;
+
+@layer base {
+  html {
+    font-size: 17.5px;
+  }
+  body {
+    font-size: 1rem;
+    line-height: 1.6;
+    letter-spacing: -0.012em;
+    -webkit-font-smoothing: antialiased;
+  }
+
+  /* Default Accent Theme: Sapphire Blue */
+  :root {
+    --color-accent-50: #eff6ff;
+    --color-accent-100: #dbeafe;
+    --color-accent-200: #bfdbfe;
+    --color-accent-300: #93c5fd;
+    --color-accent-400: #60a5fa;
+    --color-accent-500: #3b82f6;
+    --color-accent-600: #2563eb;
+    --color-accent-700: #1d4ed8;
+    --color-accent-800: #1e40af;
+    --color-accent-900: #1e3a8a;
+  }
+
+  /* Emerald Theme */
+  [data-theme-accent="emerald"] {
+    --color-accent-50: #ecfdf5;
+    --color-accent-100: #d1fae5;
+    --color-accent-200: #a7f3d0;
+    --color-accent-300: #6ee7b7;
+    --color-accent-400: #34d399;
+    --color-accent-500: #10b981;
+    --color-accent-600: #059669;
+    --color-accent-700: #047857;
+    --color-accent-800: #065f46;
+    --color-accent-900: #064e3b;
+  }
+
+  /* Purple / Violet Theme */
+  [data-theme-accent="purple"] {
+    --color-accent-50: #faf5ff;
+    --color-accent-100: #f3e8ff;
+    --color-accent-200: #e9d5ff;
+    --color-accent-300: #d8b4fe;
+    --color-accent-400: #c084fc;
+    --color-accent-500: #a855f7;
+    --color-accent-600: #9333ea;
+    --color-accent-700: #7e22ce;
+    --color-accent-800: #6b21a8;
+    --color-accent-900: #581c87;
+  }
+
+  /* Sunset Amber Theme */
+  [data-theme-accent="amber"] {
+    --color-accent-50: #fffbeb;
+    --color-accent-100: #fef3c7;
+    --color-accent-200: #fde68a;
+    --color-accent-300: #fcd34d;
+    --color-accent-400: #fbbf24;
+    --color-accent-500: #f59e0b;
+    --color-accent-600: #d97706;
+    --color-accent-700: #b45309;
+    --color-accent-800: #92400e;
+    --color-accent-900: #78350f;
+  }
+
+  /* Rose Theme */
+  [data-theme-accent="rose"] {
+    --color-accent-50: #fff1f2;
+    --color-accent-100: #ffe4e6;
+    --color-accent-200: #fecdd3;
+    --color-accent-300: #fda4af;
+    --color-accent-400: #fb7185;
+    --color-accent-500: #f43f5e;
+    --color-accent-600: #e11d48;
+    --color-accent-700: #be123c;
+    --color-accent-800: #9f1239;
+    --color-accent-900: #881337;
+  }
+
+  /* Cyan Theme */
+  [data-theme-accent="cyan"] {
+    --color-accent-50: #ecfeff;
+    --color-accent-100: #cffafe;
+    --color-accent-200: #a5f3fc;
+    --color-accent-300: #67e8f9;
+    --color-accent-400: #22d3ee;
+    --color-accent-500: #06b6d4;
+    --color-accent-600: #0891b2;
+    --color-accent-700: #0e7490;
+    --color-accent-800: #155e75;
+    --color-accent-900: #164e63;
+  }
+}
+
+/* Fix dropdown option visibility in dark mode and light mode across all browsers */
+select option {
+  background-color: #ffffff;
+  color: #0f172a;
+  padding: 10px 14px;
+}
+
+.dark select option {
+  background-color: #0f172a;
+  color: #f8fafc;
+  padding: 10px 14px;
+}
+
+/* Custom Scrollbars */
+::-webkit-scrollbar {
+  width: 7px;
+  height: 7px;
+}
+
+::-webkit-scrollbar-track {
+  background: transparent;
+}
+
+::-webkit-scrollbar-thumb {
+  background: rgba(148, 163, 184, 0.4);
+  border-radius: 9999px;
+}
+
+.dark ::-webkit-scrollbar-thumb {
+  background: rgba(51, 65, 85, 0.6);
+}
+
+::-webkit-scrollbar-thumb:hover {
+  background: rgba(148, 163, 184, 0.7);
+}
+
+.dark ::-webkit-scrollbar-thumb:hover {
+  background: rgba(71, 85, 105, 0.9);
+}
+
+/* Scrollbar at Top Utility */
+.scrollbar-top {
+  transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+}
+
+.scrollbar-top-content {
+  transform: rotateX(180deg);
+  -webkit-transform: rotateX(180deg);
+}
+
+/* Glassmorphism Classes */
+.glass-panel {
+  background: rgba(255, 255, 255, 0.75);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(226, 232, 240, 0.85);
+}
+
+.dark .glass-panel {
+  background: rgba(18, 22, 36, 0.8);
+  backdrop-filter: blur(14px);
+  -webkit-backdrop-filter: blur(14px);
+  border: 1px solid rgba(38, 45, 74, 0.7);
+}
+
+/* Modal animation glass background */
+.glass-overlay {
+  background: rgba(15, 23, 42, 0.45);
+  backdrop-filter: blur(6px);
+}
+
+.dark .glass-overlay {
+  background: rgba(2, 6, 23, 0.75);
+  backdrop-filter: blur(6px);
+}
+
+/* Invoice Print styles */
+@media print {
+  body * {
+    visibility: hidden;
+  }
+  #printable-invoice, #printable-invoice * {
+    visibility: visible;
+  }
+  #printable-invoice {
+    position: absolute;
+    left: 0;
+    top: 0;
+    width: 100%;
+    margin: 0;
+    padding: 20px;
+    background: white !important;
+    color: black !important;
+  }
+}
